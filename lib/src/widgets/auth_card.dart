@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_login/src/jplatform_rest/jp_login.dart';
+import 'package:flutter_login/src/models/user_model.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:transformer_page_view/transformer_page_view.dart';
@@ -464,16 +466,25 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
     setState(() => _isSubmitting = true);
     final auth = Provider.of<Auth>(context, listen: false);
     String error;
+    User user;
 
     if (auth.isLogin) {
-      error = await auth.onLogin(LoginData(
+      user = await JPLogin().loginToJPlatform(LoginData(
         name: auth.email,
         password: auth.password,
+        url: auth.url,
+        port: auth.port,
+        firmNr: auth.firmNr,
+        lang: auth.lang,
       ));
     } else {
       error = await auth.onSignup(LoginData(
         name: auth.email,
         password: auth.password,
+        url: auth.url,
+        port: auth.port,
+        firmNr: auth.firmNr,
+        lang: auth.lang,
       ));
     }
 
@@ -485,8 +496,8 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
 
     _submitController.reverse();
 
-    if (!DartHelper.isNullOrEmpty(error)) {
-      showErrorToast(context, error);
+    if (user == null) {
+      showErrorToast(context, 'Login failed!');
       Future.delayed(const Duration(milliseconds: 271), () {
         setState(() => _showShadow = true);
       });

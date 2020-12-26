@@ -5,13 +5,14 @@ import 'constants.dart';
 import 'custom_route.dart';
 import 'dashboard_screen.dart';
 import 'users.dart';
+import 'user'
 
 class LoginScreen extends StatelessWidget {
   static const routeName = '/auth';
 
   Duration get loginTime => Duration(milliseconds: timeDilation.ceil() * 2250);
 
-  Future<String> _loginUser(LoginData data) {
+  Future<User> _loginUser(LoginData data) {
     return Future.delayed(loginTime).then((_) {
       if (!mockUsers.containsKey(data.name)) {
         return 'Username not exists';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login/src/models/user_model.dart';
 
 import '../models/login_data.dart';
 
@@ -12,17 +13,23 @@ typedef RecoverCallback = Future<String> Function(String);
 
 class Auth with ChangeNotifier {
   Auth({
-    this.onLogin,
     this.onSignup,
     this.onRecoverPassword,
     String email = '',
     String password = '',
     String confirmPassword = '',
+    String url = '',
+    String port = '',
+    String lang = '',
+    int firmNr = 1,
   })  : this._email = email,
         this._password = password,
-        this._confirmPassword = confirmPassword;
+        this._confirmPassword = confirmPassword,
+        this._url = url,
+        this._port = port,
+        this._lang = lang,
+        this._firmNr = firmNr;
 
-  final AuthCallback onLogin;
   final AuthCallback onSignup;
   final RecoverCallback onRecoverPassword;
 
@@ -71,4 +78,33 @@ class Auth with ChangeNotifier {
     _confirmPassword = confirmPassword;
     notifyListeners();
   }
+  
+  String _url;
+  get url => _url;
+  set url(String urlString){
+    _url = url;
+    notifyListeners();
+  }
+
+  String _port;
+  get port => _port;
+  set port(String portString){
+    _port = port;
+    notifyListeners();
+  }
+
+  String _lang;
+  get lang => _lang;
+  set lang(String langString){
+    _lang = lang;
+    notifyListeners();
+  }
+
+  int _firmNr;
+  get firmNr => _firmNr;
+  set firmNr(int value){
+    _firmNr = value;
+    notifyListeners();
+  }
+  
 }

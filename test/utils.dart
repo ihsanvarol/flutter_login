@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login/src/models/user_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import '../lib/flutter_login.dart';
@@ -9,7 +10,7 @@ import '../lib/src/widgets/animated_button.dart';
 const loadingAnimationDuration = const Duration(seconds: 1);
 
 class LoginCallback {
-  Future<String> onLogin(LoginData data) => null;
+  Future<User> onLogin(LoginData data) => null;
   Future<String> onSignup(LoginData data) => null;
   Future<String> onRecoverPassword(String data) => null;
   String emailValidator(String value) => null;
@@ -33,9 +34,9 @@ List<LoginData> stubCallback(MockCallback mockCallback) {
   when(mockCallback.passwordValidator(user.password)).thenReturn(null);
   when(mockCallback.passwordValidator('invalid-name')).thenReturn('Invalid!');
 
-  when(mockCallback.onLogin(user)).thenAnswer((_) => Future.value(null));
+  /*when(mockCallback.onLogin(user)).thenAnswer((_) => Future.value(null));
   when(mockCallback.onLogin(invalidUser))
-      .thenAnswer((_) => Future.value('Invalid!'));
+      .thenAnswer((_) => Future.value('Invalid!'));*/
 
   when(mockCallback.onSignup(user)).thenAnswer((_) => Future.value(null));
   when(mockCallback.onSignup(invalidUser))

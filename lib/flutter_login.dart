@@ -23,6 +23,7 @@ export 'src/models/login_data.dart';
 export 'src/providers/login_messages.dart';
 export 'src/providers/login_theme.dart';
 import 'src/constants.dart';
+import 'src/jplatform_rest/jp_login.dart';
 
 class _AnimationTimeDilationDropdown extends StatelessWidget {
   _AnimationTimeDilationDropdown({
@@ -75,6 +76,10 @@ class _Header extends StatefulWidget {
     this.height = 250.0,
     this.logoController,
     this.titleController,
+    this.url,
+    this.port,
+    this.firmNr,
+    this.lang,
     @required this.loginTheme,
   });
 
@@ -86,6 +91,11 @@ class _Header extends StatefulWidget {
   final LoginTheme loginTheme;
   final AnimationController logoController;
   final AnimationController titleController;
+  final String url;
+  final String port;
+  final int firmNr;
+  final String lang;
+
 
   @override
   __HeaderState createState() => __HeaderState();
@@ -206,7 +216,6 @@ class FlutterLogin extends StatefulWidget {
   FlutterLogin({
     Key key,
     @required this.onSignup,
-    @required this.onLogin,
     @required this.onRecoverPassword,
     this.title = 'LOGIN',
     this.logo,
@@ -222,9 +231,6 @@ class FlutterLogin extends StatefulWidget {
 
   /// Called when the user hit the submit button when in sign up mode
   final AuthCallback onSignup;
-
-  /// Called when the user hit the submit button when in login mode
-  final AuthCallback onLogin;
 
   /// Called when the user hit the submit button when in recover password mode
   final RecoverCallback onRecoverPassword;
@@ -548,7 +554,6 @@ class _FlutterLoginState extends State<FlutterLogin>
         ),
         ChangeNotifierProvider(
           create: (context) => Auth(
-            onLogin: widget.onLogin,
             onSignup: widget.onSignup,
             onRecoverPassword: widget.onRecoverPassword,
           ),
