@@ -228,7 +228,9 @@ class FlutterLogin extends StatefulWidget {
     this.titleTag,
     this.showDebugButtons = false,
     this.url,
-
+    this.port,
+    this.lang,
+    this.firmNr
   }) : super(key: key);
 
   /// Called when the user hit the submit button when in sign up mode
