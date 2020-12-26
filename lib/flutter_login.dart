@@ -227,6 +227,8 @@ class FlutterLogin extends StatefulWidget {
     this.logoTag,
     this.titleTag,
     this.showDebugButtons = false,
+    this.url,
+
   }) : super(key: key);
 
   /// Called when the user hit the submit button when in sign up mode
@@ -274,6 +276,15 @@ class FlutterLogin extends StatefulWidget {
   /// release mode, this will be overrided to false regardless of the value
   /// passed in
   final bool showDebugButtons;
+
+  final String url;
+
+  final String port;
+
+  final int firmNr;
+
+  final String lang;
+
 
   static final FormFieldValidator<String> defaultEmailValidator = (value) {
     if (value.isEmpty || !Regex.email.hasMatch(value)) {
@@ -359,6 +370,10 @@ class _FlutterLoginState extends State<FlutterLogin>
       logoTag: widget.logoTag,
       title: widget.title,
       titleTag: widget.titleTag,
+      url: widget.url,
+      port:widget.port,
+      firmNr: widget.firmNr,
+      lang:widget.lang,
       loginTheme: loginTheme,
     );
   }
