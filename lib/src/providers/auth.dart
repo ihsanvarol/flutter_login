@@ -12,7 +12,7 @@ typedef AuthCallback = Future<String> Function(LoginData);
 typedef RecoverCallback = Future<String> Function(String);
 
 class Auth with ChangeNotifier {
-  Auth({
+  Auth( {
     this.onSignup,
     this.onRecoverPassword,
     String email = '',
@@ -22,6 +22,7 @@ class Auth with ChangeNotifier {
     String port = '',
     String lang = '',
     int firmNr = 1,
+    this.userLoginInfo,
   })  : this._email = email,
         this._password = password,
         this._confirmPassword = confirmPassword,
@@ -32,6 +33,7 @@ class Auth with ChangeNotifier {
 
   final AuthCallback onSignup;
   final RecoverCallback onRecoverPassword;
+  final User userLoginInfo;
 
   AuthMode _mode = AuthMode.Login;
 

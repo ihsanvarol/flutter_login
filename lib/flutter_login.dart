@@ -6,6 +6,7 @@ import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_login/src/models/user_model.dart';
 import 'package:provider/provider.dart';
 import 'src/providers/login_theme.dart';
 import 'src/widgets/null_widget.dart';
@@ -605,7 +606,7 @@ class _FlutterLoginState extends State<FlutterLogin>
                         emailValidator: emailValidator,
                         passwordValidator: passwordValidator,
                         onSubmit: _reverseHeaderAnimation,
-                        onSubmitCompleted: widget.onSubmitAnimationCompleted,
+                        onSubmitCompleted: widget.onSubmitAnimationCompleted(User),
                         url:widget.url,
                         port:widget.port,
                         firmNr:widget.firmNr,
