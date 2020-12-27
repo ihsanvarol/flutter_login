@@ -302,7 +302,7 @@ class AuthCardState extends State<AuthCard> with TickerProviderStateMixin {
                     onSwitchRecoveryPassword: () => _switchRecovery(true),
                     onSubmitCompleted: () {
                       _forwardChangeRouteAnimation().then((_) {
-                        widget?.onSubmitCompleted();
+                        widget?.onSubmitCompleted(User);
                       });
                     },
                   ),
@@ -505,7 +505,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
 
     _submitController.reverse();
 
-    if (user == null) {
+    if (user == null || user.success == false) {
       showErrorToast(context, 'Login failed!');
       Future.delayed(const Duration(milliseconds: 271), () {
         setState(() => _showShadow = true);
