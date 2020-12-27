@@ -23,7 +23,6 @@ export 'src/models/login_data.dart';
 export 'src/providers/login_messages.dart';
 export 'src/providers/login_theme.dart';
 import 'src/constants.dart';
-import 'src/jplatform_rest/jp_login.dart';
 
 class _AnimationTimeDilationDropdown extends StatelessWidget {
   _AnimationTimeDilationDropdown({
@@ -603,6 +602,10 @@ class _FlutterLoginState extends State<FlutterLogin>
                         passwordValidator: passwordValidator,
                         onSubmit: _reverseHeaderAnimation,
                         onSubmitCompleted: widget.onSubmitAnimationCompleted,
+                        url:widget.url,
+                        port:widget.port,
+                        firmNr:widget.firmNr,
+                        lang:widget.lang,
                       ),
                     ),
                     Positioned(

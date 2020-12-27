@@ -30,6 +30,10 @@ class AuthCard extends StatefulWidget {
     this.passwordValidator,
     this.onSubmit,
     this.onSubmitCompleted,
+    this.url,
+    this.port,
+    this.firmNr,
+    this.lang,
   }) : super(key: key);
 
   final EdgeInsets padding;
@@ -38,6 +42,11 @@ class AuthCard extends StatefulWidget {
   final FormFieldValidator<String> passwordValidator;
   final Function onSubmit;
   final Function onSubmitCompleted;
+  final String url;
+  final String port;
+  final int firmNr;
+  final String lang;
+
 
   @override
   AuthCardState createState() => AuthCardState();
