@@ -1,3 +1,5 @@
+library flutter_login;
+
 class User{
   final String authorization;
   final String user;
