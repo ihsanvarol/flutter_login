@@ -300,7 +300,7 @@ class AuthCardState extends State<AuthCard> with TickerProviderStateMixin {
                     emailValidator: widget.emailValidator,
                     passwordValidator: widget.passwordValidator,
                     onSwitchRecoveryPassword: () => _switchRecovery(true),
-                    onSubmitCompleted: (User) {
+                    onSubmitCompleted: () {
                       _forwardChangeRouteAnimation().then((_) {
                         widget?.onSubmitCompleted();
                       });
