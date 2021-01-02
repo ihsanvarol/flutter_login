@@ -41,7 +41,7 @@ class AuthCard extends StatefulWidget {
   final FormFieldValidator<String> emailValidator;
   final FormFieldValidator<String> passwordValidator;
   final Function onSubmit;
-  final Function onSubmitCompleted;
+  final Function(User) onSubmitCompleted;
   final String url;
   final String port;
   final int firmNr;
@@ -300,9 +300,9 @@ class AuthCardState extends State<AuthCard> with TickerProviderStateMixin {
                     emailValidator: widget.emailValidator,
                     passwordValidator: widget.passwordValidator,
                     onSwitchRecoveryPassword: () => _switchRecovery(true),
-                    onSubmitCompleted: () {
+                    onSubmitCompleted: (User) {
                       _forwardChangeRouteAnimation().then((_) {
-                        widget?.onSubmitCompleted();
+                        widget?.onSubmitCompleted;
                       });
                     },
                   ),
@@ -352,7 +352,7 @@ class _LoginCard extends StatefulWidget {
   final FormFieldValidator<String> passwordValidator;
   final Function onSwitchRecoveryPassword;
   final Function onSwitchAuth;
-  final Function onSubmitCompleted;
+  final Function(User) onSubmitCompleted;
 
   @override
   _LoginCardState createState() => _LoginCardState();
