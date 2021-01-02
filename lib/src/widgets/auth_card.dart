@@ -302,7 +302,7 @@ class AuthCardState extends State<AuthCard> with TickerProviderStateMixin {
                     onSwitchRecoveryPassword: () => _switchRecovery(true),
                     onSubmitCompleted: (User) {
                       _forwardChangeRouteAnimation().then((_) {
-                        widget?.onSubmitCompleted;
+                        widget?.onSubmitCompleted(User);
                       });
                     },
                   ),
