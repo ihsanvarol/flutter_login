@@ -25,7 +25,7 @@ class JPLogin
 
       final responseJson = json.decode(response.body);
       print(responseJson);
-      return User.fromJson(responseJson);
+      return User.fromJson(data.url, data.port, data.firmNr.toString(), data.lang, data.name, responseJson);
     });
   }
 }
